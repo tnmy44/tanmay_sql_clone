@@ -1,0 +1,55 @@
+{
+  "reusable_subgraph1" : {
+    "name" : "reusable_subgraph1",
+    "macroType" : "query",
+    "definition" : "select * from {{table1}} union all select * from {{table2}}",
+    "parameters" : {
+      "type" : "record",
+      "fields" : [ {
+        "name" : "table1",
+        "kind" : {
+          "type" : "table"
+        },
+        "optional" : false,
+        "isWorkflowNodeConfiguration" : false,
+        "isReferenced" : false
+      }, {
+        "name" : "table2",
+        "kind" : {
+          "type" : "table"
+        },
+        "optional" : false,
+        "isWorkflowNodeConfiguration" : false,
+        "isReferenced" : false
+      } ]
+    },
+    "description" : "Union two tables",
+    "staleState" : "none",
+    "propertiesFile" : {
+      "name" : "macros",
+      "content" : "---\nversion: 2\nmacros:\n- name: \"reusable_subgraph1\"\n  description: \"Union two tables\"\n  arguments:\n  - name: \"table1\"\n    type: \"table\"\n    description: \"{\\\"ProphecyType\\\": \\\"table\\\"}\"\n  - name: \"table2\"\n    type: \"table\"\n    description: \"{\\\"ProphecyType\\\": \\\"table\\\"}\"\n  macroType: \"query\"\n",
+      "path" : "HelloWorld_SQL/macros/macros.yml",
+      "projectConfiguration" : null,
+      "folderConfiguration" : {
+        "version" : 2,
+        "macros" : [ {
+          "name" : "reusable_subgraph1",
+          "description" : "Union two tables",
+          "arguments" : [ {
+            "name" : "table1",
+            "type" : "table",
+            "description" : "{\"ProphecyType\": \"table\"}"
+          }, {
+            "name" : "table2",
+            "type" : "table",
+            "description" : "{\"ProphecyType\": \"table\"}"
+          } ],
+          "macroType" : "query"
+        } ]
+      },
+      "packagesYml" : null,
+      "editable" : true
+    },
+    "version" : 0
+  }
+}

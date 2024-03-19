@@ -25,7 +25,21 @@ subgraphs: {}
 sqlModels:
   .prophecy/metadata/sqlmodels/stg_orders:
     name: stg_orders
-    schema: null
+    schema:
+      providerType: Snowflake
+      fields:
+      - name: ORDER_ID
+        dataType:
+          type: Number
+      - name: CUSTOMER_ID
+        dataType:
+          type: Number
+      - name: ORDER_DATE
+        dataType:
+          type: Date
+      - name: STATUS
+        dataType:
+          type: String
     description: null
     author: tanmay@prophecy.io
     files:
@@ -36,9 +50,58 @@ sqlModels:
       models: []
       datasets: []
     createdAt: '2024-03-19 10:40:39'
+  .prophecy/metadata/sqlmodels/tanmay:
+    name: tanmay
+    schema:
+      providerType: Snowflake
+      fields:
+      - name: CUSTOMER_ID
+        dataType:
+          type: Number
+      - name: NAME
+        dataType:
+          type: String
+    description: null
+    author: tanmay@prophecy.io
+    files:
+    - models/tanmay.sql
+    - .prophecy/ide/models/tanmay.json
+    sqlDependencies:
+      models: []
+      datasets: []
+    createdAt: '2024-03-19 10:53:30'
   .prophecy/metadata/sqlmodels/orders:
     name: orders
-    schema: null
+    schema:
+      providerType: Snowflake
+      fields:
+      - name: ORDER_ID
+        dataType:
+          type: Number
+      - name: CUSTOMER_ID
+        dataType:
+          type: Number
+      - name: ORDER_DATE
+        dataType:
+          type: Date
+      - name: STATUS
+        dataType:
+          type: String
+      - name: CREDIT_CARD_AMOUNT
+        dataType:
+          type: Number
+      - name: COUPON_AMOUNT
+        dataType:
+          type: Number
+      - name: BANK_TRANSFER_AMOUNT
+        dataType:
+          type: Number
+      - name: GIFT_CARD_AMOUNT
+        dataType:
+          type: Number
+      - name: AMOUNT
+        dataType:
+          type: Number
     description: This table has basic information about orders, as well as some derived
       facts based on payments
     author: tanmay@prophecy.io
@@ -52,7 +115,30 @@ sqlModels:
     createdAt: '2024-03-19 10:40:39'
   .prophecy/metadata/sqlmodels/customers:
     name: customers
-    schema: null
+    schema:
+      providerType: Snowflake
+      fields:
+      - name: CUSTOMER_ID
+        dataType:
+          type: Number
+      - name: FIRST_NAME
+        dataType:
+          type: String
+      - name: LAST_NAME
+        dataType:
+          type: String
+      - name: FIRST_ORDER
+        dataType:
+          type: Date
+      - name: MOST_RECENT_ORDER
+        dataType:
+          type: Date
+      - name: NUMBER_OF_ORDERS
+        dataType:
+          type: Number
+      - name: CUSTOMER_LIFETIME_VALUE
+        dataType:
+          type: Number
     description: This table has basic information about a customer, as well as some
       derived facts based on a customer's orders
     author: tanmay@prophecy.io
@@ -66,7 +152,21 @@ sqlModels:
     createdAt: '2024-03-19 10:40:39'
   .prophecy/metadata/sqlmodels/stg_payments:
     name: stg_payments
-    schema: null
+    schema:
+      providerType: Snowflake
+      fields:
+      - name: PAYMENT_ID
+        dataType:
+          type: Number
+      - name: ORDER_ID
+        dataType:
+          type: Number
+      - name: PAYMENT_METHOD
+        dataType:
+          type: String
+      - name: AMOUNT
+        dataType:
+          type: Number
     description: null
     author: tanmay@prophecy.io
     files:
@@ -77,9 +177,40 @@ sqlModels:
       models: []
       datasets: []
     createdAt: '2024-03-19 10:40:39'
+  .prophecy/metadata/sqlmodels/somedata:
+    name: somedata
+    schema:
+      providerType: Snowflake
+      fields:
+      - name: CUSTOMER_ID
+        dataType:
+          type: Number
+      - name: NAME
+        dataType:
+          type: String
+    description: null
+    author: tanmay@prophecy.io
+    files:
+    - models/somedata.sql
+    - .prophecy/ide/models/somedata.json
+    sqlDependencies:
+      models: []
+      datasets: []
+    createdAt: '2024-03-19 10:53:01'
   .prophecy/metadata/sqlmodels/stg_customers:
     name: stg_customers
-    schema: null
+    schema:
+      providerType: Snowflake
+      fields:
+      - name: CUSTOMER_ID
+        dataType:
+          type: Number
+      - name: FIRST_NAME
+        dataType:
+          type: String
+      - name: LAST_NAME
+        dataType:
+          type: String
     description: null
     author: tanmay@prophecy.io
     files:
@@ -90,7 +221,17 @@ sqlModels:
       models: []
       datasets: []
     createdAt: '2024-03-19 10:40:39'
-sqlMacros: {}
+sqlMacros:
+  .prophecy/metadata/sqlmacros/reusable_subgraph1:
+    name: reusable_subgraph1
+    macroType: query
+    description: Union two tables
+    author: tanmay@prophecy.io
+    files:
+    - macros/reusable_subgraph1.sql
+    - .prophecy/ide/macros/reusable_subgraph1.json
+    - macros/macros.yml
+    createdAt: '2024-03-19 10:52:24'
 sqlSeeds:
   .prophecy/metadata/sqlseeds/raw_customers:
     name: raw_customers

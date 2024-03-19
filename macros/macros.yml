@@ -1,0 +1,13 @@
+---
+version: 2
+macros:
+- name: "reusable_subgraph1"
+  description: "Union two tables"
+  arguments:
+  - name: "table1"
+    type: "table"
+    description: "{\"ProphecyType\": \"table\"}"
+  - name: "table2"
+    type: "table"
+    description: "{\"ProphecyType\": \"table\"}"
+  macroType: "query"
