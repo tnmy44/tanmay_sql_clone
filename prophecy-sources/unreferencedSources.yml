@@ -1,3 +1,11 @@
 ---
 version: 2
-unreferencedSources: []
+unreferencedSources:
+- name: "somedata"
+  columns:
+  - name: "name"
+    dataType:
+      type: "String"
+  - name: "customer_id"
+    dataType:
+      type: "Number"

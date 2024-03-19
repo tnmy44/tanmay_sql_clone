@@ -1,27 +1,63 @@
-WITH somedata AS (
+WITH unnamed0 AS (
 
   SELECT * 
   
-  FROM {{ ref('somedata')}}
+  FROM somedata
 
 ),
 
-Reformat_1 AS (
+unnamed1 AS (
 
   SELECT 
-    CUSTOMER_ID + 10 AS CUSTOMER_ID,
-    NAME AS NAME
+    name,
+    customer_id
   
-  FROM somedata AS in0
+  FROM unnamed0
 
 ),
 
-reusable_subgraph1_1 AS (
+unnamed2 AS (
 
-  {{ HelloWorld_SQL.reusable_subgraph1(table1 = 'somedata', table2 = 'Reformat_1') }}
+  SELECT * 
+  
+  FROM unnamed1
+  
+  WHERE 1 = 1
+
+),
+
+t1 AS (
+
+  SELECT * 
+  
+  FROM unnamed2
+  
+  ORDER BY customer_id ASC
+
+),
+
+unnamed3 AS (
+
+  SELECT 
+    customer_id,
+    name
+  
+  FROM t1
+
+),
+
+unnamed4 AS (
+
+  SELECT * 
+  
+  FROM unnamed3
+  
+  WHERE 2 = 2
 
 )
 
 SELECT *
 
-FROM reusable_subgraph1_1
+FROM unnamed4
+
+ORDER BY name

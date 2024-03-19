@@ -1,0 +1,130 @@
+{
+  "id" : "canonical_sg_model",
+  "metainfo" : {
+    "label" : "canonical_sg_model",
+    "autoLayout" : false,
+    "staleState" : "none",
+    "sourceSuggestions" : {
+      "sources" : [ ]
+    },
+    "graphConfig" : {
+      "userDefinedConfig" : {
+        "vars" : { }
+      }
+    },
+    "version" : 3
+  },
+  "processes" : {
+    "t1##XATwIhXP" : {
+      "id" : "t1##XATwIhXP",
+      "component" : "SQLStatement",
+      "metadata" : {
+        "label" : "t1",
+        "x" : 20,
+        "y" : 20,
+        "phase" : 0,
+        "macroDependencies" : [ ]
+      },
+      "properties" : {
+        "fileTabs" : [ {
+          "path" : "out",
+          "id" : "out",
+          "language" : "sql",
+          "content" : "SELECT \n  name,\n  customer_id\n\nFROM somedata\n\nWHERE 1 = 1\n\nORDER BY customer_id\n\nLIMIT 100\n"
+        } ]
+      },
+      "ports" : {
+        "inputs" : [ ],
+        "outputs" : [ {
+          "id" : "X3yb6dDH",
+          "schema" : {
+            "providerType" : "Snowflake",
+            "fields" : [ {
+              "name" : "NAME",
+              "dataType" : {
+                "type" : "String"
+              }
+            }, {
+              "name" : "CUSTOMER_ID",
+              "dataType" : {
+                "type" : "Number"
+              }
+            } ]
+          },
+          "slug" : "out"
+        } ],
+        "isCustomOutputSchema" : false,
+        "autoUpdateOnRun" : false
+      }
+    },
+    "canonical_sg_model##lEA9i3HC" : {
+      "id" : "canonical_sg_model##lEA9i3HC",
+      "component" : "TargetModel",
+      "metadata" : {
+        "label" : "canonical_sg_model",
+        "x" : 220,
+        "y" : 20,
+        "phase" : 0,
+        "macroDependencies" : [ ]
+      },
+      "properties" : {
+        "customQueryDisabled" : false,
+        "customQuery" : true,
+        "incrementalEditorDisabled" : true,
+        "query" : "SELECT \n  customer_id,\n  name\n\nFROM t1\n\nWHERE 2 = 2\n\nORDER BY name\n\nLIMIT 200\n",
+        "incrementalKey" : false,
+        "incremental" : {
+          "expression" : "true"
+        }
+      },
+      "ports" : {
+        "inputs" : [ {
+          "id" : "eLgqu5fw",
+          "schema" : {
+            "providerType" : "Snowflake",
+            "fields" : [ {
+              "name" : "NAME",
+              "dataType" : {
+                "type" : "String"
+              }
+            }, {
+              "name" : "CUSTOMER_ID",
+              "dataType" : {
+                "type" : "Number"
+              }
+            } ]
+          },
+          "slug" : "t1"
+        } ],
+        "outputs" : [ {
+          "id" : "cySsq65h",
+          "schema" : {
+            "providerType" : "Snowflake",
+            "fields" : [ {
+              "name" : "CUSTOMER_ID",
+              "dataType" : {
+                "type" : "Number"
+              }
+            }, {
+              "name" : "NAME",
+              "dataType" : {
+                "type" : "String"
+              }
+            } ]
+          },
+          "slug" : "out"
+        } ],
+        "isCustomOutputSchema" : false,
+        "autoUpdateOnRun" : false
+      }
+    }
+  },
+  "connections" : [ {
+    "id" : "PHmyO8j7",
+    "source" : "t1##XATwIhXP",
+    "sourcePort" : "X3yb6dDH",
+    "target" : "canonical_sg_model##lEA9i3HC",
+    "targetPort" : "eLgqu5fw"
+  } ],
+  "component" : "Model"
+}

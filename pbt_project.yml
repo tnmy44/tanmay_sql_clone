@@ -70,6 +70,26 @@ sqlModels:
       models: []
       datasets: []
     createdAt: '2024-03-19 10:53:30'
+  .prophecy/metadata/sqlmodels/canonical_sg_model:
+    name: canonical_sg_model
+    schema:
+      providerType: Snowflake
+      fields:
+      - name: CUSTOMER_ID
+        dataType:
+          type: Number
+      - name: NAME
+        dataType:
+          type: String
+    description: null
+    author: tanmay@prophecy.io
+    files:
+    - models/canonical_sg_model.sql
+    - .prophecy/ide/models/canonical_sg_model.json
+    sqlDependencies:
+      models: []
+      datasets: []
+    createdAt: '2024-03-19 11:02:17'
   .prophecy/metadata/sqlmodels/orders:
     name: orders
     schema:
@@ -150,6 +170,26 @@ sqlModels:
       models: []
       datasets: []
     createdAt: '2024-03-19 10:40:39'
+  .prophecy/metadata/sqlmodels/reusable_subgraph_model:
+    name: reusable_subgraph_model
+    schema:
+      providerType: Snowflake
+      fields:
+      - name: CUSTOMER_ID
+        dataType:
+          type: Number
+      - name: NAME
+        dataType:
+          type: String
+    description: null
+    author: tanmay@prophecy.io
+    files:
+    - models/reusable_subgraph_model.sql
+    - .prophecy/ide/models/reusable_subgraph_model.json
+    sqlDependencies:
+      models: []
+      datasets: []
+    createdAt: '2024-03-19 11:01:55'
   .prophecy/metadata/sqlmodels/stg_payments:
     name: stg_payments
     schema:
@@ -297,7 +337,23 @@ sqlSeeds:
     - seeds/raw_payments.csv
     createdAt: '2024-03-19 10:40:39'
 sqlSources: {}
-sqlUnreferencedSources: {}
+sqlUnreferencedSources:
+  .prophecy/metadata/sqlunreferencedsources/somedata:
+    name: somedata
+    schema:
+      providerType: snowflake
+      fields:
+      - name: name
+        dataType:
+          type: String
+      - name: customer_id
+        dataType:
+          type: Number
+    description: null
+    author: tanmay@prophecy.io
+    files:
+    - prophecy-sources/unreferencedSources.yml
+    createdAt: '2024-03-19 11:14:31'
 sqlPipeline:
   name: sqlPipeline
   description: null
